@@ -105,8 +105,8 @@ public class HomeActivity extends AppCompatActivity
   @Override
   public void onDrawerOpened(@NonNull View view) {
     //el drawer se ha abierto completamente
-    Toast.makeText(this, getString(R.string.navigation_drawer_open),
-            Toast.LENGTH_SHORT).show();
+//    Toast.makeText(this, getString(R.string.navigation_drawer_open),
+//            Toast.LENGTH_SHORT).show();
   }
 
   @Override
