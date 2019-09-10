@@ -7,7 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.cpinedae.movilidad.adaptador.Lista_adaptador;
+import com.cpinedae.movilidad.modelo.Guia;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Created by dani on 28/12/16.
@@ -15,28 +26,75 @@ import android.widget.TextView;
 public class HomeContentFragment extends Fragment {
 
 
-  private static final String TEXT = "text";
+    private static final String TEXT = "text";
+    private ListView lvListaPaquetes;
 
-  public static HomeContentFragment newInstance(String text) {
-    HomeContentFragment frag = new HomeContentFragment();
+    ArrayList<Guia> listaGuias;
 
-    Bundle args = new Bundle();
-    args.putString(TEXT, text);
-    frag.setArguments(args);
+    public static HomeContentFragment newInstance(String text) {
+        HomeContentFragment frag = new HomeContentFragment();
 
-    return frag;
-  }
+        Bundle args = new Bundle();
+        args.putString(TEXT, text);
+        frag.setArguments(args);
 
-  @Override
-  public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
-          Bundle savedInstanceState) {
-    View layout = inflater.inflate(R.layout.home_fragment, container, false);
-
-    if (getArguments() != null) {
-      ((TextView) layout.findViewById(R.id.text)).setText(getArguments().getString(TEXT));
+        return frag;
     }
 
-    return layout;
-  }
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
+
+
+        View layout = inflater.inflate(R.layout.home_fragment, container, false);
+        lvListaPaquetes = layout.findViewById(R.id.lvLista);
+        listaGuias = new ArrayList<>();
+        listaGuias.add(new Guia("A0000000000", "Cristhian Pineda", "Guatemala", "54045612"));
+        listaGuias.add(new Guia("A0000000001", "Carol", "Guatemala", "42282440"));
+
+        if (listaGuias !=null && !listaGuias.isEmpty()) {
+            System.out.println("hay datos en la lista");
+//            ((TextView) layout.findViewById(R.id.text)).setText(getArguments().getString(TEXT));
+
+
+            lvListaPaquetes.setAdapter(new Lista_adaptador(getActivity(),R.layout.itemlist, listaGuias) {
+                @Override
+                public void onEntrada(Object entrada, View view) {
+                   if(entrada!=null){
+                       TextView textGuia = view.findViewById(R.id.noguia);
+                       if(textGuia!= null){
+                           textGuia.setText(((Guia) entrada).getNoGuia());
+                       }
+                       TextView textNomdes = view.findViewById(R.id.detinatario);
+                       if(textNomdes!=null){
+                           textNomdes.setText(((Guia) entrada).getNomDes());
+                       }
+                       TextView textDirdes = view.findViewById(R.id.direccion);
+                       if(textDirdes!=null){
+                           textDirdes.setText(((Guia) entrada).getDirDes());
+                       }
+                       TextView textTel = view.findViewById(R.id.telefono);
+                       textTel.setText(((Guia) entrada).getTeldes());
+                   }else{
+                       System.out.println("entrada es null");
+                   }
+                }
+            });
+        }
+//        ArrayAdapter<Guia> arrayAdapter = new ArrayAdapter<Guia>(getActivity(), R.layout.itemlist, listaGuias);
+//        lvListaPaquetes.setAdapter(arrayAdapter);
+
+
+        lvListaPaquetes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Guia guia = (Guia) parent.getItemAtPosition(position);
+                CharSequence texto = "Seleccionado: "+guia.getNoGuia();
+                Toast.makeText(getActivity(), texto, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return layout;
+    }
 }
 

@@ -6,8 +6,15 @@ public class Guia {
     private String dirDes;
     private String teldes;
 
-    public Guia() {
+//    public Guia() {
+//
+//    }
 
+    public Guia(String noGuia, String nomDes, String dirDes, String teldes) {
+        this.noGuia = noGuia;
+        this.nomDes = nomDes;
+        this.dirDes = dirDes;
+        this.teldes = teldes;
     }
 
     public String getNoGuia() {
