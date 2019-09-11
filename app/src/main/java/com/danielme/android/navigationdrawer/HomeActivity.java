@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity
@@ -67,51 +66,44 @@ public class HomeActivity extends AppCompatActivity
   @Override
   public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
     int title;
+    Fragment fragment;
+    FragmentManager fragmentManager;
     switch (menuItem.getItemId()) {
-      case R.id.nav_camera:
-        title = R.string.menu_camera;
-        Fragment fragment = HomeContentFragment.newInstance(getString(title));
-        FragmentManager fragmentManager = getSupportFragmentManager();
+      case R.id.agenda:
+        title = R.string.menu_agenda;
+         fragment = HomeContentFragment.newInstance(getString(title));
+         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.home_content, fragment).commit();
-
-        setTitle(getString(title));
         break;
-      case R.id.nav_gallery:
-        title = R.string.menu_gallery;
-        Fragment fragmentEnvioPaquete = EnvioPaquete.newInstances(getString(title));
-        FragmentManager fragmentManagerEnvio = getSupportFragmentManager();
-        fragmentManagerEnvio.beginTransaction().replace(R.id.home_content, fragmentEnvioPaquete).commit();
-        setTitle(getString(title));
+      case R.id.nav_sincronizar:
+        title = R.string.menu_sincronizar;
+         fragment = Sincronizar.newInstance(getString(title));
+         fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_content, fragment).commit();
         break;
-      case R.id.nav_manage:
-        title = R.string.menu_tools;
-        Fragment fragment2 = HomeContentFragment.newInstance(getString(title));
-        FragmentManager fragmentManager2 = getSupportFragmentManager();
-        fragmentManager2.beginTransaction().replace(R.id.home_content, fragment2).commit();
-
-        setTitle(getString(title));
+      case R.id.nav_informe:
+        title = R.string.menu_informe;
+        fragment = Informe.newInstance(getString(title));
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_content, fragment).commit();
         break;
-      case R.id.nav_share:
-        title = R.string.menu_share;
-        Fragment fragment3 = HomeContentFragment.newInstance(getString(title));
-        FragmentManager fragmentManager3 = getSupportFragmentManager();
-        fragmentManager3.beginTransaction().replace(R.id.home_content, fragment3).commit();
-
-        setTitle(getString(title));
+      case R.id.nav_config:
+        title = R.string.menu_config;
+        fragment = Configuracion.newInstance(getString(title));
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_content, fragment).commit();
         break;
-      case R.id.nav_send:
-        title = R.string.menu_send;
-        Fragment fragment4 = HomeContentFragment.newInstance(getString(title));
-        FragmentManager fragmentManager4 = getSupportFragmentManager();
-        fragmentManager4.beginTransaction().replace(R.id.home_content, fragment4).commit();
-
-        setTitle(getString(title));
+      case R.id.nav_salir:
+        title = R.string.menu_salir;
+        Toast.makeText(this, "Cerrar sesión.", Toast.LENGTH_LONG).show();
         break;
       default:
         throw new IllegalArgumentException("menu option not implemented!!");
     }
 
 
+
+    setTitle(getString(title));
 
     drawerLayout.closeDrawer(GravityCompat.START);
 

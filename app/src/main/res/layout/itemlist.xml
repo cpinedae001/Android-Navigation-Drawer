@@ -7,21 +7,28 @@
         android:id="@+id/noguia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="prueba guia"/>
+        android:text="prueba guia"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
     <TextView
         android:id="@+id/detinatario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="prueba"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textSize="18dp"/>
     <TextView
         android:id="@+id/direccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="prueba"/>
+        android:text="prueba"
+       android:textStyle="bold"
+        android:textSize="18dp"/>
     <TextView
         android:id="@+id/telefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="prueba"/>
+        android:text="prueba"
+        android:textStyle="bold"
+        android:textSize="18dp"/>
 </LinearLayout>

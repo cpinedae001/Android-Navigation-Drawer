@@ -2,8 +2,11 @@ package com.danielme.android.navigationdrawer;
 
 
 import android.os.Bundle;
+import android.support.annotation.FloatRange;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,18 +66,18 @@ public class HomeContentFragment extends Fragment {
                    if(entrada!=null){
                        TextView textGuia = view.findViewById(R.id.noguia);
                        if(textGuia!= null){
-                           textGuia.setText(((Guia) entrada).getNoGuia());
+                           textGuia.setText("   "+((Guia) entrada).getNoGuia());
                        }
                        TextView textNomdes = view.findViewById(R.id.detinatario);
                        if(textNomdes!=null){
-                           textNomdes.setText(((Guia) entrada).getNomDes());
+                           textNomdes.setText("   Destinatario: "+((Guia) entrada).getNomDes());
                        }
                        TextView textDirdes = view.findViewById(R.id.direccion);
                        if(textDirdes!=null){
-                           textDirdes.setText(((Guia) entrada).getDirDes());
+                           textDirdes.setText("   Dirección: "+((Guia) entrada).getDirDes());
                        }
                        TextView textTel = view.findViewById(R.id.telefono);
-                       textTel.setText(((Guia) entrada).getTeldes());
+                       textTel.setText("   Teléfono: "+((Guia) entrada).getTeldes());
                    }else{
                        System.out.println("entrada es null");
                    }
@@ -91,6 +94,14 @@ public class HomeContentFragment extends Fragment {
                 Guia guia = (Guia) parent.getItemAtPosition(position);
                 CharSequence texto = "Seleccionado: "+guia.getNoGuia();
                 Toast.makeText(getActivity(), texto, Toast.LENGTH_LONG).show();
+                //Fragment fragmentEnvio = EnvioPaquete.newInstances("Detalle del envio");
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.home_content, new EnvioPaquete());
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+
             }
         });
 
