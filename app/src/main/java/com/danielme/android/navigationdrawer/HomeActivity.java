@@ -1,5 +1,6 @@
 package com.danielme.android.navigationdrawer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -95,6 +96,8 @@ public class HomeActivity extends AppCompatActivity
         break;
       case R.id.nav_salir:
         title = R.string.menu_salir;
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
         Toast.makeText(this, "Cerrar sesión.", Toast.LENGTH_LONG).show();
         break;
       default:
