@@ -19,5 +19,6 @@ public class Login extends AppCompatActivity {
     public void ingresarHome(View view){
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
 }

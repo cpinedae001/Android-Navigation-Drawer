@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="265dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/usuario"
         android:inputType="textPersonName"
@@ -37,8 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText3"
@@ -46,6 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="19dp"
         android:layout_marginTop="15dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/ruta"
         android:inputType="textPersonName"
@@ -53,8 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
         android:id="@+id/editText2"
@@ -62,6 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="58dp"
         android:layout_marginTop="20dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -69,8 +70,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="96dp"
+        android:layout_height="103dp"
+        android:layout_marginBottom="47dp"
+        android:layout_marginTop="103dp"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
 
 </android.support.constraint.ConstraintLayout>
 

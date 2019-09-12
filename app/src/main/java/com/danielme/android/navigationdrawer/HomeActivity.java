@@ -38,7 +38,7 @@ public class HomeActivity extends AppCompatActivity
 
     NavigationView navigationView = findViewById(R.id.navigation_view);
     navigationView.setNavigationItemSelectedListener(this);
-
+    navigationView.setItemIconTintList(null);
     MenuItem menuItem = navigationView.getMenu().getItem(0);
     onNavigationItemSelected(menuItem);
     menuItem.setChecked(true);
@@ -53,6 +53,7 @@ public class HomeActivity extends AppCompatActivity
                 Toast.LENGTH_SHORT).show();
       }
     });
+
   }
 
   @Override
@@ -99,6 +100,7 @@ public class HomeActivity extends AppCompatActivity
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
         Toast.makeText(this, "Cerrar sesión.", Toast.LENGTH_LONG).show();
+        
         break;
       default:
         throw new IllegalArgumentException("menu option not implemented!!");
