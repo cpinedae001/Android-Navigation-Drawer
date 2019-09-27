@@ -47,7 +47,7 @@ public class HomeContentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
-
+        //getActivity().setTitle("Agenda");
 
         View layout = inflater.inflate(R.layout.home_fragment, container, false);
         lvListaPaquetes = layout.findViewById(R.id.lvLista);
@@ -99,6 +99,7 @@ public class HomeContentFragment extends Fragment {
                 transaction.replace(R.id.home_content, new EnvioPaquete());
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.addToBackStack(null);
+
                 transaction.commit();
 
 
