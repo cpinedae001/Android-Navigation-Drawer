@@ -37,7 +37,7 @@ public class EnvioPaquete extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //getActivity().setTitle("Envio");
-        
+
         View view = inflater.inflate(R.layout.fragment_envio_paquete, container, false);
 
         if (getArguments() != null) {
