@@ -25,4 +25,9 @@
     <string name="password">Password</string>
     <string name="bajarDatos">Bajar datos</string>
     <string name="subirDatos">Subir datos</string>
+    <string name="btnLoginConfig">Configurar</string>
+    <string name="direccionIP">Dirección TCP/IP</string>
+    <string name="btnTest">Test</string>
+    <string name="btnGuardar">Guardar</string>
+    <string name="direIp">https://0.0.0.0/puerto/metodo</string>
 </resources>
