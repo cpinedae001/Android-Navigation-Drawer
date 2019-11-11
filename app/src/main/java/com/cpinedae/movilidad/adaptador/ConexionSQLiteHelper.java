@@ -16,16 +16,19 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-    try {
-    db.execSQL(Utilidades.CREA_TABLA_CONFIG);
-    }catch (Exception e){
-        e.printStackTrace();
-    }
+        try {
+            db.execSQL(Utilidades.CREA_TABLA_CONFIG);
+            //db.execSQL(Utilidades.CREA_TABLA_USUARIO);
+            db.execSQL("create table usuario (user text, ruta text, password text)");
+        } catch (Exception e) {
+            System.out.println("eror al crear la tablas");
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-    db.execSQL("drop table if exists configuracion");
-    onCreate(db);
+//    db.execSQL("drop table if exists configuracion");
+//    onCreate(db);
     }
 }

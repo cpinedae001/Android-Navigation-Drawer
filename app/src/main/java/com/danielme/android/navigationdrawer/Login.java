@@ -1,7 +1,10 @@
 package com.danielme.android.navigationdrawer;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cpinedae.movilidad.Tareas.TareaConsultaUsuarioWS;
+import com.cpinedae.movilidad.adaptador.ConexionSQLiteHelper;
+import com.cpinedae.movilidad.modelo.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Login extends AppCompatActivity {
     private Button btnIngresar;
@@ -33,7 +41,7 @@ public class Login extends AppCompatActivity {
         textRuta = findViewById(R.id.textRuta);
 
 
-        //ingresarHome atq-091410243
+
     }
 
     public String quitaNulo(String var) {
@@ -48,8 +56,10 @@ public class Login extends AppCompatActivity {
 
     public void ingresarHome(View view) {
 
-        if (txtUsuario.getText().toString().trim().equals(userAdmin) && txtContraseña.getText().toString().trim().equals(userAdmin)
+        if (txtUsuario.getText().toString().trim().equals(userAdmin)
+                && txtContraseña.getText().toString().trim().equals(userAdmin)
                 && textRuta.getText().toString().toUpperCase().trim().equals(ruta)) {
+
 
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
@@ -57,12 +67,14 @@ public class Login extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Ingreso exitoso", Toast.LENGTH_SHORT).show();
         } else if (!txtUsuario.getText().toString().equals("") && !txtContraseña.getText().toString().equals("")
                 && !textRuta.getText().toString().toUpperCase().equals("")) {
+
             usuario= quitaNulo(txtUsuario.getText().toString().trim());
             contraseña =quitaNulo(txtContraseña.getText().toString().trim());
             cRuta = quitaNulo(textRuta.getText().toString());
             System.out.println(usuario+"...."+contraseña+"...."+cRuta);
             AsyncCallWS task = new AsyncCallWS();
             task.execute();
+
 
         } else {
             Toast.makeText(this, "Verifica los dotos de login", Toast.LENGTH_SHORT).show();
@@ -76,6 +88,7 @@ public class Login extends AppCompatActivity {
     }
 
     private class AsyncCallWS extends AsyncTask<String, Void, Void> {
+
         @Override
         protected Void doInBackground(String... params) {
             TareaConsultaUsuarioWS consultaUsuario = new TareaConsultaUsuarioWS();
@@ -94,7 +107,18 @@ public class Login extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             if (activo.equals("S")) {
+//                SharedPreferences prefe =getSharedPreferences("datos", Context.MODE_PRIVATE);
+//                SharedPreferences.Editor editor=prefe.edit();
+//                editor.putString(usuario, cRuta);
+//                editor.commit();
+                String [] us = new String[3];
+                us[0]= usuario;
+                us[1] = cRuta;
+                us[2] = contraseña;
+
+
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("usuario",us);
                 startActivity(intent);
                 finish();
                 Toast.makeText(getApplicationContext(), "Ingreso exitoso", Toast.LENGTH_SHORT).show();

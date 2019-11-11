@@ -56,7 +56,8 @@ public class Configuracion extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (txUsuario.getText().toString().trim().equals(usuarioAdmi) && txContraseña.getText().toString().trim().equals(contraseña)) {
+                if (txUsuario.getText().toString().trim().equals(usuarioAdmi) &&
+                        txContraseña.getText().toString().trim().equals(contraseña)) {
                     activo = true;
                     Toast toast = Toast.makeText(getContext(), "Configuracion exitosa", Toast.LENGTH_LONG);
                     toast.show();
