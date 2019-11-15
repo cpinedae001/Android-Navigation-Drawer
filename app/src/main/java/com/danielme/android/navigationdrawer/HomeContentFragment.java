@@ -1,6 +1,8 @@
 package com.danielme.android.navigationdrawer;
 
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.FloatRange;
 import android.support.annotation.Nullable;
@@ -17,6 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cpinedae.movilidad.adaptador.ConexionSQLiteHelper;
 import com.cpinedae.movilidad.adaptador.Lista_adaptador;
 import com.cpinedae.movilidad.modelo.Guia;
 
@@ -52,8 +55,22 @@ public class HomeContentFragment extends Fragment {
         View layout = inflater.inflate(R.layout.home_fragment, container, false);
         lvListaPaquetes = layout.findViewById(R.id.lvLista);
         listaGuias = new ArrayList<>();
-        listaGuias.add(new Guia("A0000000000", "Cristhian Pineda", "Guatemala", "54045612"));
-        listaGuias.add(new Guia("A0000000001", "Carol", "Guatemala", "42282440"));
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(getContext(), "db_Movilidad", null, 1);
+        SQLiteDatabase db = conn.getWritableDatabase();
+        Cursor fila = db.rawQuery("select no_guia, nomrem, nomdes, dirrem, dirdes, telrem, teldes from guia", null);
+        while (fila.moveToNext()){
+            Guia guia = new Guia();
+            guia.setNoGuia(fila.getString(0));
+            guia.setNomRem(fila.getString(1));
+            guia.setNomDes(fila.getString(2));
+            guia.setDirRem(fila.getString(3));
+            guia.setDirDes(fila.getString(4));
+            guia.setTelRem(fila.getString(5));
+            guia.setTeldes(fila.getString(6));
+            listaGuias.add(guia);
+        }
+        //listaGuias.add(new Guia("A0000000000", "Cristhian Pineda", "Guatemala", "54045612"));
+        //listaGuias.add(new Guia("A0000000001", "Carol", "Guatemala", "42282440"));
 
         if (listaGuias !=null && !listaGuias.isEmpty()) {
             System.out.println("hay datos en la lista");

@@ -18,10 +18,14 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(Utilidades.CREA_TABLA_CONFIG);
+            db.execSQL("create table guia (no_guia text primary key, fecha text, nomrem text, nomdes text, dirrem text, " +
+                    "dirdes text, telrem text, teldes text, entregado text, ruta text , transmitido text )");
+            //insert into guia (no_guia, nomrem, nomdes, dirrem, dirdes, telrem, teldes)
+            // select no_guia, nomrem, nomdes, dirrem, dirdes, telrem, teldes
             //db.execSQL(Utilidades.CREA_TABLA_USUARIO);
             db.execSQL("create table usuario (user text, ruta text, password text)");
         } catch (Exception e) {
-            System.out.println("eror al crear la tablas");
+            System.out.println("error al crear la tablas");
             e.printStackTrace();
         }
     }

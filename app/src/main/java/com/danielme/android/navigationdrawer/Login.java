@@ -3,6 +3,8 @@ package com.danielme.android.navigationdrawer;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -27,9 +29,9 @@ public class Login extends AppCompatActivity {
     private String contraseñaAdmin = "admin";
     private String ruta = "R1";
     String activo = "";
-    String usuario="";
-    String contraseña="";
-    String cRuta="";
+    String usuario = "";
+    String contraseña = "";
+    String cRuta = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,6 @@ public class Login extends AppCompatActivity {
         txtUsuario = findViewById(R.id.txtUsuario);
         txtContraseña = findViewById(R.id.txtContraseña);
         textRuta = findViewById(R.id.textRuta);
-
 
 
     }
@@ -68,12 +69,13 @@ public class Login extends AppCompatActivity {
         } else if (!txtUsuario.getText().toString().equals("") && !txtContraseña.getText().toString().equals("")
                 && !textRuta.getText().toString().toUpperCase().equals("")) {
 
-            usuario= quitaNulo(txtUsuario.getText().toString().trim());
-            contraseña =quitaNulo(txtContraseña.getText().toString().trim());
+            usuario = quitaNulo(txtUsuario.getText().toString().trim());
+            contraseña = quitaNulo(txtContraseña.getText().toString().trim());
             cRuta = quitaNulo(textRuta.getText().toString());
-            System.out.println(usuario+"...."+contraseña+"...."+cRuta);
+            System.out.println(usuario + "...." + contraseña + "...." + cRuta);
             AsyncCallWS task = new AsyncCallWS();
             task.execute();
+
 
 
         } else {
@@ -111,20 +113,63 @@ public class Login extends AppCompatActivity {
 //                SharedPreferences.Editor editor=prefe.edit();
 //                editor.putString(usuario, cRuta);
 //                editor.commit();
-                String [] us = new String[3];
-                us[0]= usuario;
+                String[] us = new String[3];
+                us[0] = usuario;
                 us[1] = cRuta;
                 us[2] = contraseña;
 
-
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                intent.putExtra("usuario",us);
+                intent.putExtra("usuario", us);
                 startActivity(intent);
                 finish();
                 Toast.makeText(getApplicationContext(), "Ingreso exitoso", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), "Verifica los dotos de login", Toast.LENGTH_SHORT).show();
+                if (validacionUsuario()) {
+                    String[] us = new String[3];
+                    us[0] = usuario;
+                    us[1] = cRuta;
+                    us[2] = contraseña;
+
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("usuario", us);
+                    startActivity(intent);
+                    finish();
+                    Toast.makeText(getApplicationContext(), "Ingreso exitoso", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Verifica los dotos de login", Toast.LENGTH_SHORT).show();
+                }
+
             }
         }
+    }
+
+    private boolean validacionUsuario() {
+        boolean respuesta = false;
+        try {
+            String query = "select 1 from usuario where user = '" + usuario + "' and " +
+                    "password = '" + contraseña + "' and ruta = '" + cRuta + "';";
+            ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "db_Movilidad", null, 1);
+            SQLiteDatabase db = conn.getWritableDatabase();
+            Cursor fila = db.rawQuery(query, null);
+            if (fila.moveToFirst()) {
+                int res = fila.getInt(0);
+                if(res==1){
+                    respuesta = true;
+                   // Toast.makeText(this, "Existe el usuario ", Toast.LENGTH_SHORT).show();
+                }
+
+
+            } else {
+                Toast.makeText(this, "El usuario no existe, conecte el dispositivo a internet para realizar login. ", Toast.LENGTH_SHORT).show();
+            }
+
+            db.close();
+        } catch (Exception e) {
+            System.out.println("eror al validar usuario");
+            e.printStackTrace();
+        }
+
+        return respuesta;
     }
 }

@@ -25,7 +25,8 @@ public class TareaConsultaUsuarioWS {
      final String SOAP_ANTION ="http://servicio.guatex.com/";*/
 
     final String NAMESPACE = "http://servicio.pwmoviles.kiosko.com/";
-    final String URL = "http://192.168.0.36:8080/pwMoviles/Servicio?xsd=1";
+   // final String URL = "http://192.168.0.36:8080/pwMoviles/Servicio?xsd=1";
+    final String URL = "http://40.77.56.193:8080/pwMoviles-1.0-SNAPSHOT/Servicio?xsd=1";
     final String METHOD_NAME = "consultaUsuario";
     final String SOAP_ANTION = "http://servicio.pwmoviles.kiosko.com/";
     String activo = "";
@@ -74,5 +75,33 @@ public class TareaConsultaUsuarioWS {
         return activo;
     }
 
+    public String traerGuias(String cod_Ruta){
+        String respuesta ="";
+
+        SoapObject request = new SoapObject(NAMESPACE, "consultaGuias");
+        PropertyInfo sayHelloPI = new PropertyInfo();
+        sayHelloPI.setName("cod_Ruta");
+        String parametro = cod_Ruta;
+        sayHelloPI.setValue(parametro);
+        request.addProperty(sayHelloPI);
+
+        SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        new MarshalBase64().register(envelope);
+        envelope.setOutputSoapObject(request);
+        HttpTransportSE androidHttpTransport = new HttpTransportSE(URL, 1800000);
+        try {
+            Log.i("TAG", "Antes de enviar....");
+            androidHttpTransport.call(SOAP_ANTION + "consultaGuias", envelope);
+            Log.i("TAG", "DEVOLVIENDO 1....");
+            SoapPrimitive response = (SoapPrimitive) envelope.getResponse();
+            respuesta = response.toString();
+
+           // Log.i("Tag", "resultado WS[" + activo + "]");
+        } catch (Exception e) {
+            e.printStackTrace();
+            respuesta = "Error al conectar" + e.getMessage();
+        }
+        return respuesta;
+    }
 
 }
