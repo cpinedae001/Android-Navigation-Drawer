@@ -69,6 +69,7 @@ public class HomeContentFragment extends Fragment {
             guia.setTeldes(fila.getString(6));
             listaGuias.add(guia);
         }
+        db.close();
         //listaGuias.add(new Guia("A0000000000", "Cristhian Pineda", "Guatemala", "54045612"));
         //listaGuias.add(new Guia("A0000000001", "Carol", "Guatemala", "42282440"));
 

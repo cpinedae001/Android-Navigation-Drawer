@@ -24,15 +24,14 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <TextView
+                <EditText
                     android:id="@+id/tvNoGuia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Noguia"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="No. Guía" />
             </LinearLayout>
 
             <LinearLayout
@@ -72,12 +71,15 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/tvNomRem"
-                        android:layout_width="294dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="18sp" />
+                        android:ems="10"
+                        android:hint="Nombre"
+                        android:inputType="textPersonName" />
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -101,12 +103,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvTelRem"
-                        android:layout_width="294dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -155,12 +151,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvNomDes"
-                        android:layout_width="294dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -185,12 +175,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvDirDes"
-                        android:layout_width="294dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -215,12 +199,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tvTelDes"
-                        android:layout_width="294dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -258,7 +236,7 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btnCamara"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -279,7 +257,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/txtAreaDescrip"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:ems="10"
@@ -306,7 +284,7 @@
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/button6"
+                    android:id="@+id/btnGuardarDatos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
