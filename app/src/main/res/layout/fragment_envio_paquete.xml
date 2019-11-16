@@ -31,7 +31,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="No. Guía" />
+                    android:text="No. Guía"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -64,7 +65,7 @@
 
                     <TextView
                         android:id="@+id/tx"
-                        android:layout_width="184dp"
+                        android:layout_width="79dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nombre"
@@ -96,12 +97,21 @@
 
                     <TextView
                         android:id="@+id/tx2"
-                        android:layout_width="184dp"
+                        android:layout_width="82dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Teléfono"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/tvTelRem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Teléfono"
+                        android:inputType="textPersonName" />
 
                 </LinearLayout>
 
@@ -144,12 +154,21 @@
 
                     <TextView
                         android:id="@+id/tx6"
-                        android:layout_width="184dp"
+                        android:layout_width="85dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Nombre"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/tvNomDes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Nombre"
+                        android:inputType="textPersonName" />
 
                 </LinearLayout>
 
@@ -168,12 +187,21 @@
 
                     <TextView
                         android:id="@+id/tx7"
-                        android:layout_width="184dp"
+                        android:layout_width="88dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Dirección"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/tvDirDes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Dirección"
+                        android:inputType="textPersonName" />
 
                 </LinearLayout>
 
@@ -192,12 +220,21 @@
 
                     <TextView
                         android:id="@+id/tx8"
-                        android:layout_width="184dp"
+                        android:layout_width="91dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Teléfono"
                         android:textSize="18sp"
                         android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/tvTelDes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Teléfono"
+                        android:inputType="textPersonName" />
 
                 </LinearLayout>
 
