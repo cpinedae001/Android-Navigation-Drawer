@@ -79,7 +79,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Nombre"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:lines="3"
+                        android:maxLines="3"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -168,7 +170,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Nombre"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:lines="3"
+                        android:maxLines="3"/>
 
                 </LinearLayout>
 
@@ -201,7 +205,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Dirección"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:lines="3"
+                        android:maxLines="3"/>
 
                 </LinearLayout>
 
@@ -234,7 +240,9 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Teléfono"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:lines="3"
+                        android:maxLines="3"/>
 
                 </LinearLayout>
 
@@ -299,6 +307,7 @@
                     android:layout_height="150dp"
                     android:ems="10"
                     android:gravity="start|top"
+                    android:hint="        Ingrese un comentario"
                     android:inputType="textMultiLine" />
             </LinearLayout>
             <LinearLayout

@@ -113,13 +113,22 @@ public class HomeContentFragment extends Fragment {
                 CharSequence texto = "Seleccionado: "+guia.getNoGuia();
                 Toast.makeText(getActivity(), texto, Toast.LENGTH_LONG).show();
                 //Fragment fragmentEnvio = EnvioPaquete.newInstances("Detalle del envio");
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.home_content, new EnvioPaquete());
-                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                transaction.addToBackStack(null);
-
-                transaction.commit();
-
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.home_content, new EnvioPaquete());
+//                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//                transaction.addToBackStack(null);
+//
+//
+//                transaction.commit();
+                Bundle bundle = new Bundle();
+                bundle.putString("key_guia", guia.getNoGuia());
+                Fragment fragment = new EnvioPaquete();
+                fragment.setArguments(bundle);
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.home_content, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
 
             }
         });
