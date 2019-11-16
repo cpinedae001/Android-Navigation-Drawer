@@ -18,7 +18,7 @@ import android.widget.Toolbar;
 public class EnvioPaquete extends Fragment {
 
     private static final String TEXT = "text";
-    private Button btnGuadar;
+   // private Button btnGuadar;
 
     public EnvioPaquete() {
         // Required empty public constructor
@@ -44,16 +44,16 @@ public class EnvioPaquete extends Fragment {
             ((TextView) view.findViewById(R.id.text)).setText(getArguments().getString(TEXT));
         }
 
-        btnGuadar = view.findViewById(R.id.btnGuadar);
-        btnGuadar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast toast = Toast.makeText(getContext(), "hola", Toast.LENGTH_LONG);
-                toast.show();
-
-
-            }
-        });
+//        btnGuadar = view.findViewById(R.id.btnGuadar);
+//        btnGuadar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast toast = Toast.makeText(getContext(), "hola", Toast.LENGTH_LONG);
+//                toast.show();
+//
+//
+//            }
+//        });
         return view;
     }
 

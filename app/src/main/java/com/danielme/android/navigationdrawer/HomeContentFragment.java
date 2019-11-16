@@ -61,11 +61,11 @@ public class HomeContentFragment extends Fragment {
         while (fila.moveToNext()){
             Guia guia = new Guia();
             guia.setNoGuia(fila.getString(0));
-            guia.setNomRem(fila.getString(1));
-            guia.setNomDes(fila.getString(2));
-            guia.setDirRem(fila.getString(3));
-            guia.setDirDes(fila.getString(4));
-            guia.setTelRem(fila.getString(5));
+            guia.setNomrem(fila.getString(1));
+            guia.setNomdes(fila.getString(2));
+            guia.setDirrem(fila.getString(3));
+            guia.setDirdes(fila.getString(4));
+            guia.setTelrem(fila.getString(5));
             guia.setTeldes(fila.getString(6));
             listaGuias.add(guia);
         }
@@ -87,11 +87,11 @@ public class HomeContentFragment extends Fragment {
                        }
                        TextView textNomdes = view.findViewById(R.id.detinatario);
                        if(textNomdes!=null){
-                           textNomdes.setText("   Destinatario: "+((Guia) entrada).getNomDes());
+                           textNomdes.setText("   Destinatario: "+((Guia) entrada).getNomdes());
                        }
                        TextView textDirdes = view.findViewById(R.id.direccion);
                        if(textDirdes!=null){
-                           textDirdes.setText("   Dirección: "+((Guia) entrada).getDirDes());
+                           textDirdes.setText("   Dirección: "+((Guia) entrada).getDirdes());
                        }
                        TextView textTel = view.findViewById(R.id.telefono);
                        textTel.setText("   Teléfono: "+((Guia) entrada).getTeldes());

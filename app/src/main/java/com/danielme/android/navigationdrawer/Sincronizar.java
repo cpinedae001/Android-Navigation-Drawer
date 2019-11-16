@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cpinedae.movilidad.Tareas.TareaConsultaUsuarioWS;
@@ -23,7 +25,10 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -35,6 +40,8 @@ public class Sincronizar extends Fragment {
     private Button btnBajarDatos, btnSubirDatos;
     private String resulatado = "";
     private String codRuta;
+    private TextView tvFechaBajo;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:MM:sss", Locale.getDefault());
 
     public Sincronizar() {
         // Required empty public constructor
@@ -58,7 +65,7 @@ public class Sincronizar extends Fragment {
 
         btnBajarDatos = view.findViewById(R.id.btnBajarDatos);
         btnSubirDatos = view.findViewById(R.id.btnSubirDatos);
-
+        tvFechaBajo = view.findViewById(R.id.tvFechaBajo);
         final ConexionSQLiteHelper conn = new ConexionSQLiteHelper(getContext(), "db_Movilidad", null, 1);
         btnBajarDatos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,14 +126,15 @@ public class Sincronizar extends Fragment {
             SQLiteDatabase db = conn.getWritableDatabase();
             int borrar = db.delete("guia",null, null);
             for(Guia obj: listGui){
+
                 ContentValues registro = new ContentValues();
                 registro.put("no_guia", obj.getNoGuia());
                 registro.put("fecha", obj.getFecha());
-                registro.put("nomrem", obj.getNomRem());
-                registro.put("nomdes", obj.getNomDes());
-                registro.put("dirrem", obj.getDirRem());
-                registro.put("dirdes", obj.getDirDes());
-                registro.put("telrem", obj.getTelRem());
+                registro.put("nomrem", obj.getNomrem());
+                registro.put("nomdes", obj.getNomdes());
+                registro.put("dirrem", obj.getDirrem());
+                registro.put("dirdes", obj.getDirdes());
+                registro.put("telrem", obj.getTelrem());
                 registro.put("teldes", obj.getTeldes());
                 registro.put("entregado", "");
                 registro.put("ruta", obj.getRuta());
@@ -135,6 +143,8 @@ public class Sincronizar extends Fragment {
 
             }
             db.close();
+            Date date = new Date();
+            tvFechaBajo.setText(dateFormat.format(date));
             Toast.makeText(getContext(), "Guias insertadas", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();

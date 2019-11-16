@@ -6,13 +6,14 @@ import java.util.List;
 public class Guia {
     private String noGuia;
     private String fecha;
-    private String nomRem;
-    private String nomDes;
-    private String dirRem;
-    private String dirDes;
-    private String telRem;
+    private String nomrem;
+    private String nomdes;
+    private String dirrem;
+    private String dirdes;
+    private String telrem;
     private String teldes;
     private String entregado;
+    private String idImagenGuia;
     private String ruta;
     private String transmitido;
     private List<ImagenGuia> listImgGui = new ArrayList<>();
@@ -23,8 +24,8 @@ public class Guia {
 
     public Guia(String noGuia, String nomDes, String dirDes, String teldes) {
         this.noGuia = noGuia;
-        this.nomDes = nomDes;
-        this.dirDes = dirDes;
+        this.nomdes = nomDes;
+        this.dirdes = dirDes;
         this.teldes = teldes;
     }
 
@@ -36,20 +37,52 @@ public class Guia {
         this.noGuia = noGuia;
     }
 
-    public String getNomDes() {
-        return nomDes;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setNomDes(String nomDes) {
-        this.nomDes = nomDes;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    public String getDirDes() {
-        return dirDes;
+    public String getNomrem() {
+        return nomrem;
     }
 
-    public void setDirDes(String dirDes) {
-        this.dirDes = dirDes;
+    public void setNomrem(String nomrem) {
+        this.nomrem = nomrem;
+    }
+
+    public String getNomdes() {
+        return nomdes;
+    }
+
+    public void setNomdes(String nomdes) {
+        this.nomdes = nomdes;
+    }
+
+    public String getDirrem() {
+        return dirrem;
+    }
+
+    public void setDirrem(String dirrem) {
+        this.dirrem = dirrem;
+    }
+
+    public String getDirdes() {
+        return dirdes;
+    }
+
+    public void setDirdes(String dirdes) {
+        this.dirdes = dirdes;
+    }
+
+    public String getTelrem() {
+        return telrem;
+    }
+
+    public void setTelrem(String telrem) {
+        this.telrem = telrem;
     }
 
     public String getTeldes() {
@@ -60,44 +93,20 @@ public class Guia {
         this.teldes = teldes;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getNomRem() {
-        return nomRem;
-    }
-
-    public void setNomRem(String nomRem) {
-        this.nomRem = nomRem;
-    }
-
-    public String getDirRem() {
-        return dirRem;
-    }
-
-    public void setDirRem(String dirRem) {
-        this.dirRem = dirRem;
-    }
-
-    public String getTelRem() {
-        return telRem;
-    }
-
-    public void setTelRem(String telRem) {
-        this.telRem = telRem;
-    }
-
     public String getEntregado() {
         return entregado;
     }
 
     public void setEntregado(String entregado) {
         this.entregado = entregado;
+    }
+
+    public String getIdImagenGuia() {
+        return idImagenGuia;
+    }
+
+    public void setIdImagenGuia(String idImagenGuia) {
+        this.idImagenGuia = idImagenGuia;
     }
 
     public String getRuta() {

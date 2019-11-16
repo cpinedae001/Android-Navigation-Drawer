@@ -46,7 +46,7 @@ public class Configuracion extends Fragment {
         //getActivity().setTitle("Configuración");
         View view = inflater.inflate(R.layout.fragment_configuracion, container, false);
         btnIngresar = view.findViewById(R.id.btnIngresar);
-        btnGuardar = view.findViewById(R.id.btnGuadar);
+        //btnGuardar = view.findViewById(R.id.btnGuadar);
         btnTest = view.findViewById(R.id.btnTest);
         txUsuario = view.findViewById(R.id.txUsuario);
         txContraseña = view.findViewById(R.id.txContraseña);

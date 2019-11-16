@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
 
 
         } else {
-            Toast.makeText(this, "Verifica los dotos de login", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Verifica los datos de login", Toast.LENGTH_SHORT).show();
             txtContraseña.setText("");
 //            txtUsuario.setText("");
 //            textRuta.setText("");
